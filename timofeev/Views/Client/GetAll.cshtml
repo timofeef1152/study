@@ -1,0 +1,51 @@
+﻿@model List<timofeev.Models.Client>
+
+@{
+    ViewBag.Title = "Клиенты";
+}
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <div>@ViewBag.Message</div>
+    <table class="table">
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Телефон</th>
+            <th>Адрес доставки</th>
+        </tr>
+        @foreach (timofeev.Models.Client c in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => c.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.Secondname)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.DeliveryAddress)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = c.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = c.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<p>
+    @Html.ActionLink("Back to Main", "Index", "Home")
+</p>

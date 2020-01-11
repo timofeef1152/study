@@ -1,0 +1,37 @@
+﻿@model List<timofeev.Models.OrderTheme>
+
+@{
+    ViewBag.Title = "Темы заказов";
+}
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <div>@ViewBag.Message</div>
+    <table class="table">
+        <tr>
+            <th>Описание</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (timofeev.Models.OrderTheme obj in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => obj.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = obj.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = obj.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<p>
+    @Html.ActionLink("Back to Main", "Index", "Home")
+</p>

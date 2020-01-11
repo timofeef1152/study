@@ -1,0 +1,69 @@
+﻿@model List<timofeev.Models.OrderDetails>
+
+@{
+    ViewBag.Title = "Описания заказов";
+}
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <div>@ViewBag.Message</div>
+    <table class="table">
+        <tr>
+            <th>Изделие</th>
+            <th>Категория</th>
+            <th>Описание</th>
+            <th>Количество</th>
+            <th>Сумма</th>
+            <th>Клиент</th>
+            <th>Телефон</th>
+            <th>Адрес доставки</th>
+            <th>Сотрудник</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (timofeev.Models.OrderDetails item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(model => item.Confectionery.Info)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Confectionery.ConfectioneryCategory.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Order.OrderTheme.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.TotalAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Order.Client.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Order.Client.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Order.Client.DeliveryAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Order.Employee.Info)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<p>
+    @Html.ActionLink("Back to Main", "Index", "Home")
+</p>

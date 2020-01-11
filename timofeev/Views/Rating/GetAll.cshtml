@@ -1,0 +1,41 @@
+﻿@model List<timofeev.Models.Rating>
+
+@{
+    ViewBag.Title = "Рейтинги";
+}
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <div>@ViewBag.Message</div>
+    <table class="table">
+        <tr>
+            <th>Рейтинг</th>
+            <th>Бонус (%)</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (timofeev.Models.Rating r in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => r.RatingLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => r.BonusPercent)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = r.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = r.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<p>
+    @Html.ActionLink("Back to Main", "Index", "Home")
+</p>

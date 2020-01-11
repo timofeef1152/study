@@ -1,0 +1,41 @@
+﻿@model List<timofeev.Models.Position>
+
+@{
+    ViewBag.Title = "Должности";
+}
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <div>@ViewBag.Message</div>
+    <table class="table">
+        <tr>
+            <th>Наименование</th>
+            <th>Зарплата ($)</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (timofeev.Models.Position p in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => p.PositionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => p.Salary)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = p.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = p.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<p>
+    @Html.ActionLink("Back to Main", "Index", "Home")
+</p>

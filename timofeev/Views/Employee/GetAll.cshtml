@@ -1,0 +1,57 @@
+﻿@model List<timofeev.Models.Employee>
+
+@{
+    ViewBag.Title = "Сотрудники";
+}
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <div>@ViewBag.Message</div>
+    <table class="table">
+        <tr>
+            <th>ФИО</th>
+            <th>Email</th>
+            <th>Должность</th>
+            <th>Зарплата ($)</th>
+            <th>Рейтинг</th>
+            <th>Бонус (%)</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (timofeev.Models.Employee e in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => e.Person.Fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => e.Person.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => e.Position.PositionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => e.Position.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => e.Rating.RatingLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => e.Rating.BonusPercent)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = e.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = e.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<p>
+    @Html.ActionLink("Back to Main", "Index", "Home")
+</p>

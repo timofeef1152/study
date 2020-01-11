@@ -1,0 +1,53 @@
+﻿@model List<timofeev.Models.Order>
+
+@{
+    ViewBag.Title = "Заказы";
+}
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <div>@ViewBag.Message</div>
+    <table class="table">
+        <tr>
+            <th>Клиент</th>
+            <th>Телефон</th>
+            <th>Адрес доставки</th>
+            <th>Сотрудник</th>
+            <th>Тема заказа</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (timofeev.Models.Order c in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => c.Client.Fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.Client.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.Client.DeliveryAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.Employee.Info)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.OrderTheme.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = c.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = c.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<p>
+    @Html.ActionLink("Back to Main", "Index", "Home")
+</p>

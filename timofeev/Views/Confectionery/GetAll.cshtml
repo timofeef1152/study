@@ -1,0 +1,53 @@
+﻿@model List<timofeev.Models.Confectionery>
+
+@{
+    ViewBag.Title = "Кондитерские изделия";
+}
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <div>@ViewBag.Message</div>
+    <table class="table">
+        <tr>
+            <th>Название</th>
+            <th>Состав</th>
+            <th>Цена</th>
+            <th>Вес</th>
+            <th>Категория</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (timofeev.Models.Confectionery c in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => c.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.Composition)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.Weight)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => c.ConfectioneryCategory.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = c.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = c.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<p>
+    @Html.ActionLink("Back to Main", "Index", "Home")
+</p>
